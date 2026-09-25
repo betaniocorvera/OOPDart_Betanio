@@ -69,10 +69,8 @@ class School {
     _people.add(p);
   }
 
-  void introduceAll() {
-    for (final person in _people) {
-      print(person.introduce());
-    }
+  int introduceAll() {
+    return _people.length;
   }
 }
 
@@ -116,7 +114,7 @@ void main() {
   final numTeachers = readNonNegativeInt('How many teachers would you like to add? ');
   final numStaff = readNonNegativeInt('How many staff members would you like to add? ');
   final totalPeople = numStudents + numTeachers + numStaff;
-  
+
   final school = School();
 
   for (var i = 1; i <= numStudents; i++) {
@@ -144,7 +142,8 @@ void main() {
   }
   
   print('\n=== Introductions ===');
-  print ('\nTotal people added: $totalPeople\n');
+  // print ('\nTotal people added: $totalPeople\n');
+  print(school.introduceAll());
 
 
 }
