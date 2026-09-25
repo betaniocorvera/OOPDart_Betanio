@@ -49,6 +49,19 @@ class Teacher extends Person {
   }
 }
 
+class Staff extends Person {
+  String _subject;
+
+  Staff(String name, int age, this._subject) : super(name, age);
+
+  String get subject => _subject;
+
+  @override
+  String introduce() {
+    return '${super.introduce()} They work in the $_subject department.';
+  }
+}
+
 class School {
   final List<Person> _people = [];
 
@@ -101,6 +114,7 @@ void main() {
 
   final numStudents = readNonNegativeInt('How many students would you like to add? ');
   final numTeachers = readNonNegativeInt('How many teachers would you like to add? ');
+  final numStaff = readNonNegativeInt('How many staff members would you like to add? ');
 
   final school = School();
 
@@ -120,9 +134,17 @@ void main() {
     school.addPerson(Teacher(name, age, subject));
   }
 
+  for (var i = 1; i <= numStaff; i++) {
+    print('\n--- Staff Member $i of $numStaff ---');
+    final name = readNonEmptyString('Name: ');
+    final age = readNonNegativeInt('Age: ');
+    final department = readNonEmptyString('Department: ');
+    school.addPerson(Staff(name, age, department));
+  }
+
   print('\n=== Introductions ===');
   school.introduceAll();
 
-  
+
 }
 
