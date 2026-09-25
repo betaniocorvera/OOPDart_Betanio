@@ -115,7 +115,8 @@ void main() {
   final numStudents = readNonNegativeInt('How many students would you like to add? ');
   final numTeachers = readNonNegativeInt('How many teachers would you like to add? ');
   final numStaff = readNonNegativeInt('How many staff members would you like to add? ');
-
+  final totalPeople = numStudents + numTeachers + numStaff;
+  
   final school = School();
 
   for (var i = 1; i <= numStudents; i++) {
@@ -141,9 +142,9 @@ void main() {
     final department = readNonEmptyString('Department: ');
     school.addPerson(Staff(name, age, department));
   }
-
+  
   print('\n=== Introductions ===');
-  school.introduceAll();
+  print ('\nTotal people added: $totalPeople\n');
 
 
 }
